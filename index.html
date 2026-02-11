@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hibro Labs Production | Innovation in Tech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --accent: #22d3ee;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-shift 5s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-blur {
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.5);
+            transform: translateY(-5px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="mesh-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center font-bold text-white">H</div>
+                <h1 class="text-xl font-extrabold tracking-tighter">HIBRO <span class="text-indigo-400">LABS</span></h1>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-widest text-slate-400">
+                <a href="#home" class="hover:text-white transition">Home</a>
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#team" class="hover:text-white transition">Team</a>
+                <a href="#projects" class="hover:text-white transition">Projects</a>
+                <a href="#contact" class="hover:text-white transition">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-2xl text-white focus:outline-none">☰</button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full glass-card py-6 flex flex-col items-center space-y-4">
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#team" class="mobile-link">Team</a>
+            <a href="#projects" class="mobile-link">Projects</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+        <div class="max-w-5xl text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-8">
+                <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                Since March 13, 2022
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
+                Crafting <span class="gradient-text">Exceptional</span> Digital Solutions.
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+                Hibro Labs Production is where architectural logic meets creative design. We deploy scalable apps and high-performance websites for the modern era.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#projects" class="bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-4 rounded-2xl font-bold transition shadow-lg shadow-indigo-500/20">Explore Work</a>
+                <a href="#contact" class="glass-card hover:bg-white/5 text-white px-10 py-4 rounded-2xl font-bold transition">Start a Project</a>
+            </div>
+        </div>
+        <!-- Decorative Circle -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full -z-0"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 px-6 reveal">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="relative">
+                    <div class="absolute -top-10 -left-10 w-32 h-32 bg-indigo-600/20 blur-3xl"></div>
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 tracking-tighter">Building <span class="text-indigo-500">Big</span>, Thinking Bigger.</h2>
+                    <p class="text-slate-400 leading-relaxed mb-8 text-lg font-medium">
+                        Innovation isn't just a buzzword at Hibro Labs; it's our core architecture. We specialize in transforming complex business challenges into intuitive digital realities. 
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-indigo-500/10 rounded-xl text-indigo-400">✓</div>
+                            <div>
+                                <h4 class="font-bold text-white">Full-Stack Deployment</h4>
+                                <p class="text-slate-500 text-sm">From concept to cloud, we handle the entire lifecycle.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-emerald-500/10 rounded-xl text-emerald-400">✓</div>
+                            <div>
+                                <h4 class="font-bold text-white">Scalable Architecture</h4>
+                                <p class="text-slate-500 text-sm">Our builds are prepared for millions of users from day one.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="glass-card p-10 rounded-[2.5rem] text-center hover-glow">
+                        <h3 class="text-5xl font-black text-indigo-500 mb-2">3+</h3>
+                        <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Years of Code</p>
+                    </div>
+                    <div class="glass-card p-10 rounded-[2.5rem] text-center mt-12 hover-glow">
+                        <h3 class="text-5xl font-black text-emerald-400 mb-2">10+</h3>
+                        <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Major Deployments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-32 px-6 bg-slate-900/20 reveal">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-black mb-4 tracking-tighter">Executive <span class="text-indigo-500">Leadership</span></h2>
+                <p class="text-slate-400 font-medium">The experts driving innovation at Hibro Labs Production</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- CEO Card -->
+                <div class="glass-card p-8 rounded-[3rem] text-center hover-glow group">
+                    <div class="relative w-48 h-48 mx-auto mb-8">
+                        <div class="absolute inset-0 bg-indigo-600/20 rounded-full blur-xl group-hover:blur-2xl transition-all"></div>
+                        <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-indigo-500/30 group-hover:border-indigo-500/60 transition-all">
+                            <!-- CEO IMAGE: Replace 'src' below with your image file path or URL -->
+                            <img src="yadnesh.jpeg" alt="Yadnesh Saindane" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-black mb-1">Yadnesh Saindane</h3>
+                    <p class="text-indigo-400 font-bold text-sm uppercase tracking-widest mb-6">CEO & Founder</p>
+                    <a href="mailto:yadneshsaindane7@gmail.com" class="text-slate-400 hover:text-white transition text-xs font-medium block mb-4">yadneshsaindane7@gmail.com</a>
+                    
+                    <!-- Only CEO keeps the social link -->
+                    <div class="flex justify-center gap-4">
+                        <a href="http://www.linkedin.com/in/yadneshsaindane0208" target="_blank" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center hover:bg-indigo-600 transition cursor-pointer font-bold text-white text-xs">in</a>
+                    </div>
+                </div>
+
+                <!-- CFO Card -->
+                <div class="glass-card p-8 rounded-[3rem] text-center hover-glow group">
+                    <div class="relative w-48 h-48 mx-auto mb-8">
+                        <div class="absolute inset-0 bg-purple-600/20 rounded-full blur-xl group-hover:blur-2xl transition-all"></div>
+                        <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-purple-500/30 group-hover:border-purple-500/60 transition-all">
+                            <!-- CFO IMAGE: Replace 'src' below with your image file path or URL -->
+                            <img src="namrata.jpeg" alt="Namrata Raosaheb Wagh" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-black mb-1">Namrata Raosaheb Wagh</h3>
+                    <p class="text-purple-400 font-bold text-sm uppercase tracking-widest mb-6">CFO</p>
+                    <a href="mailto:namratawagh90@gmail.com" class="text-slate-400 hover:text-white transition text-xs font-medium block mb-4">namratawagh90@gmail.com</a>
+                    <!-- Social Link Removed -->
+                </div>
+
+                <!-- VP Card -->
+                <div class="glass-card p-8 rounded-[3rem] text-center hover-glow group">
+                    <div class="relative w-48 h-48 mx-auto mb-8">
+                        <div class="absolute inset-0 bg-emerald-600/20 rounded-full blur-xl group-hover:blur-2xl transition-all"></div>
+                        <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-emerald-500/30 group-hover:border-emerald-500/60 transition-all">
+                            <!-- VP IMAGE: Replace 'src' below with your image file path or URL -->
+                            <img src="umesh.jpeg" alt="Umesh Suryawanshi" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-black mb-1">Umesh Suryawanshi</h3>
+                    <p class="text-emerald-400 font-bold text-sm uppercase tracking-widest mb-6">Vice President</p>
+                    <a href="mailto:patilumesh1562004@gmail.com" class="text-slate-400 hover:text-white transition text-xs font-medium block mb-4">patilumesh1562004@gmail.com</a>
+                    <!-- Social Link Removed -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-32 px-6 reveal">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                <div class="max-w-xl">
+                    <h2 class="text-5xl font-black mb-4 tracking-tighter">Production <span class="text-indigo-500">Archives</span></h2>
+                    <p class="text-slate-400 font-medium italic leading-relaxed">A history of impactful digital deployments built under the Hibro Labs umbrella.</p>
+                </div>
+                <div class="h-[2px] flex-grow bg-slate-900 mx-8 hidden md:block"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card Component -->
+                <div class="glass-card p-6 rounded-[2.5rem] group hover-glow flex flex-col h-full">
+                    <div class="h-48 rounded-3xl mb-6 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=800" alt="Agri-Man" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <h3 class="text-2xl font-black mb-2">Agri-Man</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed flex-grow">Localized ecosystem for farmers with multi-language support and community-driven resource sharing.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400">Agri-Tech</span>
+                        <a href="https://agri-man.vercel.app/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-indigo-600 transition">↗</a>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-[2.5rem] group hover-glow flex flex-col h-full">
+                    <div class="h-48 rounded-3xl mb-6 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800" alt="BCA Vault" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <h3 class="text-2xl font-black mb-2">BCA Vault</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed flex-grow">A centralized repository for academic materials, curated specifically for computer application students.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-purple-400">Education</span>
+                        <a href="https://bca-for-friends.vercel.app/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-purple-600 transition">↗</a>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-[2.5rem] group hover-glow flex flex-col h-full">
+                    <div class="h-48 rounded-3xl mb-6 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800" alt="Anitale" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <h3 class="text-2xl font-black mb-2">Anitale</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed flex-grow">Immersive interactive narrative project exploring the intersection of design and digital storytelling.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-pink-400">Interactive</span>
+                        <a href="https://ani-tale.vercel.app/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-pink-600 transition">↗</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second row of projects -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                 <div class="glass-card p-6 rounded-[2.5rem] group hover-glow flex flex-col h-full">
+                    <div class="h-48 rounded-3xl mb-6 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1606326666333-47992022416b?auto=format&fit=crop&w=800" alt="Quizzer" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <h3 class="text-2xl font-black mb-2">Quizzer</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed flex-grow">High-speed gamified testing platform with real-time feedback loops and competitive tracking.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400">Gaming</span>
+                        <a href="https://quizzer-phi-pearl.vercel.app/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-yellow-600 transition">↗</a>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-[2.5rem] group hover-glow flex flex-col h-full">
+                    <div class="h-48 rounded-3xl mb-6 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800" alt="Snakey" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <h3 class="text-2xl font-black mb-2">Snakey</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed flex-grow">Classic arcade logic reimagined through modern canvas rendering and responsive input handling.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400">Canvas JS</span>
+                        <a href="https://snakey283.vercel.app/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-600 transition">↗</a>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-[2.5rem] group hover-glow flex flex-col h-full">
+                    <div class="h-48 rounded-3xl mb-6 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800" alt="CowCare" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <h3 class="text-2xl font-black mb-2">CowCare</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed flex-grow">Livestock management tracking and wellness portal conceptualized for agricultural efficiency.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-red-400">Health-Tech</span>
+                        <a href="https://cowcare.infinityfreeapp.com/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-red-600 transition">↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 reveal">
+        <div class="max-w-4xl mx-auto glass-card p-16 rounded-[4rem] text-center relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="text-5xl font-black mb-6 tracking-tighter uppercase">Let's <span class="gradient-text">Sync</span></h2>
+                <p class="text-slate-400 mb-12 max-w-lg mx-auto font-medium text-lg leading-relaxed">Whether it's a feature request, a collaboration proposal, or a consultation — our doors are open.</p>
+                
+                <div class="grid md:grid-cols-2 gap-10 text-left">
+                    <div class="p-8 rounded-3xl bg-white/5 border border-white/5">
+                        <p class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-2">Head of Production</p>
+                        <h4 class="text-xl font-bold mb-1">Yadnesh Saindane</h4>
+                        <a href="mailto:yadneshsaindane7@gmail.com" class="text-slate-300 hover:text-white transition text-sm break-all">yadneshsaindane7@gmail.com</a>
+                    </div>
+                    <div class="p-8 rounded-3xl bg-white/5 border border-white/5">
+                        <p class="text-[10px] font-black uppercase tracking-widest text-emerald-400 mb-2">Operating Hours</p>
+                        <h4 class="text-xl font-bold mb-1">9 AM - 6 PM</h4>
+                        <p class="text-slate-300 text-sm">Mon - Fri • Nashik, India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 border-t border-slate-900 text-center text-slate-500 text-xs font-black uppercase tracking-[0.4em]">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <p>&copy; 2026 Hibro Labs Production. Engineered for Excellence.</p>
+            <div class="flex gap-6">
+                <a href="https://github.com/yadneshsaindane7-boop" target="_blank" class="hover:text-white transition">Github</a>
+                <a href="http://www.linkedin.com/in/yadneshsaindane0208" target="_blank" class="hover:text-white transition">LinkedIn</a>
+                <a href="https://www.instagram.com/283march" target="_blank" class="hover:text-white transition">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal animation on scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal);
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
